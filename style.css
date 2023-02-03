@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    /*background-image: url("images/Bubbletown_002.webp");*/
+    /*background-size: 100% 100%;*/
+    /*background-repeat: no-repeat;*/
+    /*background-color: #4096ee;*/
+    /*background-attachment: fixed;*/
+}
+
+body {
+    background-image: url("images/Bubbletown_002.webp");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-color: #4096ee;
+    background-attachment: fixed;
+}
+
+#patrick {
+    height: 100px;
+    /*width: 15%;*/
+    display: inline;
+    position: absolute;
+    top: 600px;
+    left: 900px;
+
+}
+
+
+#quote-cloud + #quote {
+    display: flex;
+    position: absolute;
+    color: red;
+    font-size: 30px;
+    /*top: 500px;*/
+
+}
+
+#quote-cloud {
+    height: 600px;
+    position: relative;
+    left: 500px;
+    top: 30px;
+    /*opacity: 0.1;*/
+}
+
