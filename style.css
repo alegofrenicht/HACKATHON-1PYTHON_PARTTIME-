@@ -1,11 +1,6 @@
 * {
     margin: 0;
     padding: 0;
-    /*background-image: url("images/Bubbletown_002.webp");*/
-    /*background-size: 100% 100%;*/
-    /*background-repeat: no-repeat;*/
-    /*background-color: #4096ee;*/
-    /*background-attachment: fixed;*/
 }
 
 body {
@@ -27,20 +22,50 @@ body {
 }
 
 
-#quote-cloud + #quote {
-    display: flex;
-    position: absolute;
-    color: red;
-    font-size: 30px;
-    /*top: 500px;*/
-
+#quote-cloud img {
+    width: 30%;
+    height: 30%;
 }
-
 #quote-cloud {
-    height: 600px;
     position: relative;
-    left: 500px;
-    top: 30px;
-    /*opacity: 0.1;*/
+    display: flex;
+    justify-content: center;
+    opacity: 0;
 }
+
+
+#quote-cloud figcaption{
+    text-align: center;
+    width: 20%;
+    position: absolute;
+    font-family: 'My Custom Font', Verdana, serif;
+    color: black;
+    font-size: 40px;
+    top: 37%;
+    bottom: 50%;
+    left: 43%;
+
+}
+
+
+#quote-cloud  #no {
+    border-style: none;
+    background: none;
+    position: absolute;
+    top: 100px;
+    left: 10px;
+    font-family: 'My Custom Font', Verdana, serif;
+    font-size: 40px;
+}
+
+#quote-cloud  #yes {
+    border-style: none;
+    background: none;
+    position: absolute;
+    top: 100px;
+    left: 300px;
+    font-size: 40px;
+    font-family: 'My Custom Font', Verdana, serif;
+}
+
 
