@@ -68,4 +68,27 @@ body {
     font-family: 'My Custom Font', Verdana, serif;
 }
 
+#volume {
+    border-style: none;
+    background: none;
+}
 
+#sponge {
+    height: 100px;
+    position: absolute;
+    left: 900px;
+    top: 600px;
+    opacity: 0;
+}
+
+#gary {
+    height: 50px;
+    position: absolute;
+    left: 1550px;
+    top: 550px;
+    opacity: 0;
+}
+
+audio {
+    display: none;
+}
