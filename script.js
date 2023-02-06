@@ -7,12 +7,11 @@ let sound = document.getElementById('sound')
 let icon = document.getElementById('icon')
 volume.addEventListener('click', function (){
     if (src_flag){
-        console.log('pass')
+
         sound.src = src_off[0]
         icon.src = src_off[1]
         src_flag = false
     } else {
-        console.log('not')
         sound.src = src_on[0]
         icon.src = src_on[1]
         src_flag = true
@@ -119,15 +118,6 @@ function appear_cloud( element, text, name_int){
 
 }
 
-function appear_cloud_2( element, text, name_int){
-        element.textContent = text
-        distance ++
-        quote_cloud.style.opacity = `${distance * 0.1}`
-        if (distance > 9){
-            clearInterval(name_int)
-        }
-
-}
 
 function vanish(interval_func) {
     distance--
@@ -207,6 +197,17 @@ function add_buttons(){
                     patrick.style.left = `-${distance}px`
                     if (distance > 600){
                         clearInterval(patrick_anim)
+                        distance = 0
+                        titles()
+                         let screen = document.getElementById('the_end')
+                                let last = setInterval(function (){
+                                    distance ++
+                                    screen.style.opacity = `${distance * 0.1}`
+                                    if (distance > 9){
+                                        clearInterval(last)
+                                        sound.src = src_off[0]
+                                    }
+                                }, 100)
                     }
                 }, 10)
             }
@@ -262,6 +263,7 @@ function sponganimation(){
     let sponge = document.getElementById('sponge')
     sponge.removeEventListener('mouseover', spongeover)
     sponge.removeEventListener('mouseleave', spongeleave)
+    sponge.removeEventListener('click', sponganimation)
     sponge.style.cursor = 'default'
     let interval = setInterval(function (){
         distance ++
@@ -282,9 +284,10 @@ function sponganimation(){
                 if (distance > 700){
                     clearInterval(new_inter)
                     distance = 0
+                    Gary()
+                    let gary = document.getElementById('gary')
                     let int = setInterval(function (){
                         distance++
-                        let gary = document.getElementById('gary')
                         gary.style.opacity = `${distance * 0.1}`
                         let meow = document.createElement('audio')
                         meow.src = 'images/gary_meow.mp3'
@@ -300,10 +303,13 @@ function sponganimation(){
                                     clearInterval(gary_int)
                                     gary.addEventListener('mouseover', garyover)
                                     gary.addEventListener('mouseleave', garyleave)
+                                    gary.addEventListener('mousedown', garytake)
+                                    gary.addEventListener('mouseup', garyput)
+                                    gary.addEventListener('dragend', garymove)
                                 }
                             }, 80)
                         }
-                    }, 1000)
+                    }, 500)
 
                 }
             }, 10)
@@ -312,20 +318,100 @@ function sponganimation(){
 }
 
 function garyover(){
-    distance = 50
     let gary = document.getElementById('gary')
+    distance = 70
     gary.style.cursor = 'grab'
     let animation = setInterval(function (){
     distance ++
     gary.style.height = `${distance}px`
-    if (distance > 70){
+    if (distance > 90){
         clearInterval(animation)
-        console.log('its done')
     }
     }, 1)
 }
 
 function garyleave(){
     let gary = document.getElementById('gary')
-    gary.style.height = '50px'
+    gary.style.height = '70px'
+}
+
+function garytake(){
+    let gary = document.getElementById('gary')
+    gary.style.cursor = 'grabbing'
+}
+
+function garyput(){
+    let gary = document.getElementById('gary')
+    gary.style.cursor = 'grab'
+}
+
+function garymove(e){
+    let gary = document.getElementById('gary')
+    let sponge = document.getElementById('sponge')
+    let _x = e.clientX
+    let _y = e.clientY
+    if ((_x > 600 && _x < 850) && (_y > 245 && _y < 625)){
+        e.target.style.left = _x + "px";
+        e.target.style.top = _y + "px";
+        gary.removeEventListener('mouseover', garyover)
+        gary.removeEventListener('mouseleave', garyleave)
+        gary.removeEventListener('mousedown', garytake)
+        gary.removeEventListener('mouseup', garyput)
+        distance = 10
+        let interval = setInterval(function (){
+            distance --
+            e.target.style.opacity = `${distance * 0.1}`
+            if (distance < 1){
+                clearInterval(interval)
+                distance = 10
+                let int = setInterval(function (){
+                    distance --
+                    sponge.style.opacity = `${distance * 0.1}`
+                    if (distance < 1){
+                        clearInterval(int)
+                        sponge.src = 'images/SpongeBob.png'
+                        sponge.style.height = '750px'
+                        sponge.style.top = '180px'
+                        let interval_two = setInterval(function (){
+                            distance ++
+                            sponge.style.opacity = `${distance * 0.1}`
+                            if (distance > 9){
+                                clearInterval(interval_two)
+                                distance = 0
+                                titles()
+                                let screen = document.getElementById('the_end')
+                                let last = setInterval(function (){
+                                    distance ++
+                                    screen.style.opacity = `${distance * 0.1}`
+                                    if (distance > 9){
+                                        clearInterval(last)
+                                        sound.src = src_off[0]
+                                    }
+                                }, 100)
+                    }
+                }, 100)
+                    }
+                }, 40)
+            }
+        }, 200)
+    } else {
+         e.target.style.left = _x + "px";
+         e.target.style.top = _y + "px";
+    }
+}
+
+
+function Gary(){
+    let element = document.createElement('img')
+    element.setAttribute('id', 'gary')
+    element.setAttribute('src', 'images/garry.png')
+    element.setAttribute('draggable', 'true')
+    document.body.append(element)
+}
+
+function titles(){
+    let el = document.createElement('img')
+    el.setAttribute('id', 'the_end')
+    el.setAttribute('src', "images/TheEnd.webp")
+    document.body.append(el)
 }
