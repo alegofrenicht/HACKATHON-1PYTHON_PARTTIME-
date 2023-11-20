@@ -4,7 +4,7 @@
 **Description:**
 This browser-based game is built using HTML, CSS, and JavaScript. It provides an interactive and engaging experience, employing dynamic event handling, interactive animations, and DOM manipulation. The code highlights the technical aspects of the game, focusing on functionality and implementation. Dive into this immersive browser game and explore its captivating features and interactive elements.
 
-**Link: [Play the Game](https://alegofrenicht.github.io/HACKATHON-1/)**
+**Link: [Play the Game](https://alegofrenicht.github.io/browser-based-game/)**
 
 **Key Features:**
 - HTML, CSS, and JavaScript are used to develop the game.
